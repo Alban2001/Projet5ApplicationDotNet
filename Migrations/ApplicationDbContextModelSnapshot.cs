@@ -17,7 +17,7 @@ namespace Projet5ApplicationDotNet.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.0")
+                .HasAnnotation("ProductVersion", "6.0.35")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -182,7 +182,24 @@ namespace Projet5ApplicationDotNet.Migrations
                     b.ToTable("UserTokens");
                 });
 
-            modelBuilder.Entity("Projet5ApplicationDotNet.Models.ModeleVoiture", b =>
+            modelBuilder.Entity("Projet5ApplicationDotNet.Models.Marque", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Nom")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Marques");
+                });
+
+            modelBuilder.Entity("Projet5ApplicationDotNet.Models.Modele", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -193,17 +210,18 @@ namespace Projet5ApplicationDotNet.Migrations
                     b.Property<int>("Annee")
                         .HasColumnType("int");
 
-                    b.Property<string>("Marque")
+                    b.Property<string>("Nom")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Modele")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UneMarqueId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("ModelesVoiture");
+                    b.HasIndex("UneMarqueId");
+
+                    b.ToTable("Modeles");
                 });
 
             modelBuilder.Entity("Projet5ApplicationDotNet.Models.Reparation", b =>
@@ -243,17 +261,16 @@ namespace Projet5ApplicationDotNet.Migrations
                     b.Property<string>("CodeVIN")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DateAchat")
+                    b.Property<DateTime?>("DateAchat")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("DateVente")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Disponible")
+                    b.Property<bool?>("Disponible")
                         .HasColumnType("bit");
 
                     b.Property<string>("Finition")
@@ -265,21 +282,31 @@ namespace Projet5ApplicationDotNet.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PrixAchat")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PrixVente")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UnModeleVoitureId")
+                    b.Property<int>("UnModeleId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UnModeleVoitureId");
+                    b.HasIndex("UnModeleId");
 
                     b.ToTable("Voitures");
+                });
+
+            modelBuilder.Entity("Projet5ApplicationDotNet.Models.Modele", b =>
+                {
+                    b.HasOne("Projet5ApplicationDotNet.Models.Marque", "UneMarque")
+                        .WithMany("ListeModele")
+                        .HasForeignKey("UneMarqueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UneMarque");
                 });
 
             modelBuilder.Entity("Projet5ApplicationDotNet.Models.Reparation", b =>
@@ -295,14 +322,21 @@ namespace Projet5ApplicationDotNet.Migrations
 
             modelBuilder.Entity("Projet5ApplicationDotNet.Models.Voiture", b =>
                 {
-                    b.HasOne("Projet5ApplicationDotNet.Models.ModeleVoiture", "UnModeleVoiture")
+                    b.HasOne("Projet5ApplicationDotNet.Models.Modele", "UnModele")
                         .WithMany("ListeVoiture")
-                        .HasForeignKey("UnModeleVoitureId");
+                        .HasForeignKey("UnModeleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("UnModeleVoiture");
+                    b.Navigation("UnModele");
                 });
 
-            modelBuilder.Entity("Projet5ApplicationDotNet.Models.ModeleVoiture", b =>
+            modelBuilder.Entity("Projet5ApplicationDotNet.Models.Marque", b =>
+                {
+                    b.Navigation("ListeModele");
+                });
+
+            modelBuilder.Entity("Projet5ApplicationDotNet.Models.Modele", b =>
                 {
                     b.Navigation("ListeVoiture");
                 });

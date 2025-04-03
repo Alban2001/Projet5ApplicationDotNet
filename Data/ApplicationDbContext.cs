@@ -14,8 +14,9 @@ namespace Projet5ApplicationDotNet.Data
         {
         }
         public DbSet<Voiture> Voitures { get; set; }
-        public DbSet<ModeleVoiture> ModelesVoiture { get; set; }
+        public DbSet<Modele> Modeles { get; set; }
         public DbSet<Reparation> Reparations { get; set; }
+        public DbSet<Marque> Marques { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,16 +26,6 @@ namespace Projet5ApplicationDotNet.Data
                 .HasNoKey();
             modelBuilder.Entity<IdentityUserToken<string>>()
                 .HasNoKey();
-
-            modelBuilder.Entity<Reparation>()
-                .HasOne(e => e.UneVoiture)
-                .WithMany(e => e.ListeReparation)
-                .IsRequired(true);
-
-            modelBuilder.Entity<Voiture>()
-                .HasOne(e => e.UnModeleVoiture)
-                .WithMany(e => e.ListeVoiture)
-                .IsRequired(false);
         }
     }
 }
