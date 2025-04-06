@@ -245,8 +245,24 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\64e98105-dfc9-4b5e-b28f-9c13b2645e93.jpg",
+      "PackagePath": "staticwebassets\\uploads\\64e98105-dfc9-4b5e-b28f-9c13b2645e93.jpg"
+    },
+    {
       "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\8ca572a1-eb57-4597-b07d-505ab0a9fc09.jpg",
       "PackagePath": "staticwebassets\\uploads\\8ca572a1-eb57-4597-b07d-505ab0a9fc09.jpg"
+    },
+    {
+      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\9bd89561-ec38-444f-ba9d-9adea17e79e7.PNG",
+      "PackagePath": "staticwebassets\\uploads\\9bd89561-ec38-444f-ba9d-9adea17e79e7.PNG"
+    },
+    {
+      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\d24f4fca-2ee7-48a7-9fc9-3a59c6d5cdbd.jpg",
+      "PackagePath": "staticwebassets\\uploads\\d24f4fca-2ee7-48a7-9fc9-3a59c6d5cdbd.jpg"
+    },
+    {
+      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\ecb9782b-5b17-4d17-b6ee-67271238e3f1.PNG",
+      "PackagePath": "staticwebassets\\uploads\\ecb9782b-5b17-4d17-b6ee-67271238e3f1.PNG"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Projet5ApplicationDotNet.Microsoft.AspNetCore.StaticWebAssets.props",

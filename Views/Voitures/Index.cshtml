@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Projet5ApplicationDotNet.Models.Voiture>
+﻿@model IEnumerable<Projet5ApplicationDotNet.Models.VoitureViewModel>
 
 @{
     ViewData["Title"] = "Voitures";
@@ -13,33 +13,23 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CodeVIN)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Finition)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateAchat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PrixAchat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Disponible)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateVente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Photo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.PhotoS)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PrixVente)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marque)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modele)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Annee)
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -47,36 +37,27 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CodeVIN)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Finition)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DateAchat)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PrixAchat)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Disponible)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateVente)
-                </td>
-                <td>
-                    <img src="~/uploads/@Html.DisplayFor(modelItem => item.Photo)" />
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
+                    <img src="~/uploads/@Html.DisplayFor(modelItem => item.PhotoS)" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.PrixVente)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Détails</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+                    @Html.DisplayFor(modelItem => item.Marque)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modele)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Annee)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdVoiture">Modifier</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdVoiture">Détails</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdVoiture">Supprimer</a>
                 </td>
             </tr>
         }

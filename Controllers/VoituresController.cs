@@ -23,8 +23,28 @@ namespace Projet5ApplicationDotNet.Controllers
         // GET: Voitures
         public async Task<IActionResult> Index()
         {
-            return _context.Voitures != null ?
-                        View(await _context.Voitures.ToListAsync()) :
+            var voitures = await _context.Voitures
+                .Include(v => v.UnModele)
+                .Include(v => v.UnModele.UneMarque)
+                .ToListAsync();
+            var VoitureViewModel = voitures.Select(v => new VoitureViewModel
+            {
+                IdVoiture = v.Id,
+                CodeVIN = v.CodeVIN,
+                DateAchat = v.DateAchat,
+                Disponible = v.Disponible,
+                DateVente = v.DateVente,
+                PrixVente = v.PrixVente,
+                Description = v.Description,
+                Annee = v.UnModele.Annee,
+                Marque = v.UnModele.UneMarque.Nom,
+                Modele = v.UnModele.Nom,
+                Finition = v.Finition,
+                PhotoS = v.Photo
+            }).ToList();
+
+            return VoitureViewModel != null ?
+                        View(VoitureViewModel) :
                         Problem("Entity set 'ApplicationDbContext.Voitures'  is null.");
         }
 
@@ -37,13 +57,31 @@ namespace Projet5ApplicationDotNet.Controllers
             }
 
             var voiture = await _context.Voitures
+                .Include(v => v.UnModele)
+                .Include(v => v.UnModele.UneMarque)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (voiture == null)
             {
                 return NotFound();
             }
 
-            return View(voiture);
+            var VoitureViewModel = new VoitureViewModel
+            {
+                IdVoiture = voiture.Id,
+                CodeVIN = voiture.CodeVIN,
+                DateAchat = voiture.DateAchat,
+                Disponible = voiture.Disponible,
+                DateVente = voiture.DateVente,
+                PrixVente = voiture.PrixVente,
+                Description = voiture.Description,
+                Annee = voiture.UnModele.Annee,
+                Marque = voiture.UnModele.UneMarque.Nom,
+                Modele = voiture.UnModele.Nom,
+                Finition = voiture.Finition,
+                PhotoS = voiture.Photo
+            };
+
+            return View(VoitureViewModel);
         }
 
         // GET: Voitures/Create
@@ -63,31 +101,30 @@ namespace Projet5ApplicationDotNet.Controllers
         {
             if (ModelState.IsValid)
             {
-                var UneMarque = new Marque()
-                {
-                    Nom = model.Marque
-                };
-                var UnModele = new Modele()
-                {
-                    Annee = model.Annee,
-                    Nom = model.Modele,
-                    UneMarque = UneMarque
-                };
-
                 var marque = await _context.Marques
                     .Where(p => p.Nom.ToLower() == model.Marque.ToLower())
                     .FirstOrDefaultAsync();
                 if (marque == null)
                 {
-                    _context.Add(UneMarque);
+                    marque = new Marque()
+                    {
+                        Nom = model.Marque
+                    };
+                    _context.Add(marque);
                 }
 
                 var modele = await _context.Modeles
-                    .Where(p => p.Annee == model.Annee && p.Nom.ToLower() == model.Modele.ToLower() && p.UneMarque == UneMarque)
+                    .Where(p => p.Annee == model.Annee && p.Nom.ToLower() == model.Modele.ToLower() && p.UneMarque == marque)
                     .FirstOrDefaultAsync();
                 if (modele == null)
                 {
-                    _context.Add(UnModele);
+                    modele = new Modele()
+                    {
+                        Annee = model.Annee,
+                        Nom = model.Modele,
+                        UneMarque = marque
+                    };
+                    _context.Add(modele);
                 }
 
                 await _context.SaveChangesAsync();
@@ -115,7 +152,7 @@ namespace Projet5ApplicationDotNet.Controllers
                     PrixVente = model.PrixVente,
                     Finition = model.Finition,
                     Photo = fileName,
-                    UnModele = UnModele
+                    UnModele = modele
                 };
                 _context.Add(UneVoiture);
                 await _context.SaveChangesAsync();
