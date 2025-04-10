@@ -15,7 +15,7 @@ namespace Projet5ApplicationDotNet.Models
 
         public string? PrixAchat { get; set; }
 
-        public bool? Disponible { get; set; }
+        public bool Disponible { get; set; } = false;
 
         public DateTime? DateVente { get; set; }
 

@@ -17,7 +17,7 @@ namespace Projet5ApplicationDotNet.Models
         [Display(Name = "Prix d'achat")]
         public string? PrixAchat { get; set; }
 
-        public bool? Disponible { get; set; }
+        public bool Disponible { get; set; } = false;
 
         [Display(Name = "Date de vente")]
         public DateTime? DateVente { get; set; }
@@ -30,12 +30,14 @@ namespace Projet5ApplicationDotNet.Models
 
         [Required(ErrorMessage = "Veuillez remplir ce champ !")]
         [Range(1990, 2025, ErrorMessage = "L'année doit être comprise entre 1990 et 2025.")]
+        [Display(Name = "Année")]
         public int Annee { get; set; }
 
         [Required(ErrorMessage = "Veuillez remplir ce champ !")]
         public string Marque { get; set; }
 
         [Required(ErrorMessage = "Veuillez remplir ce champ !")]
+        [Display(Name = "Modèle")]
         public string Modele { get; set; }
 
         [Required(ErrorMessage = "Veuillez remplir ce champ !")]

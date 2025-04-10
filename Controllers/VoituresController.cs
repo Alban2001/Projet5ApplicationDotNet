@@ -90,14 +90,12 @@ namespace Projet5ApplicationDotNet.Controllers
             return View();
         }
 
-
-
         // POST: Voitures/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(VoitureViewModel model)
+        public async Task<IActionResult> Create(CreateVoitureViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -170,12 +168,32 @@ namespace Projet5ApplicationDotNet.Controllers
                 return NotFound();
             }
 
-            var voiture = await _context.Voitures.FindAsync(id);
+            var voiture = await _context.Voitures
+                .Include(v => v.UnModele)
+                .Include(v => v.UnModele.UneMarque)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (voiture == null)
             {
                 return NotFound();
             }
-            return View(voiture);
+
+            var VoitureViewModel = new EditVoitureViewModel
+            {
+                IdVoiture = voiture.Id,
+                CodeVIN = voiture.CodeVIN,
+                DateAchat = voiture.DateAchat,
+                Disponible = voiture.Disponible,
+                DateVente = voiture.DateVente,
+                PrixVente = voiture.PrixVente,
+                Description = voiture.Description,
+                Annee = voiture.UnModele.Annee,
+                Marque = voiture.UnModele.UneMarque.Nom,
+                Modele = voiture.UnModele.Nom,
+                Finition = voiture.Finition,
+                PhotoS = voiture.Photo
+            };
+
+            return View(VoitureViewModel);
         }
 
         // POST: Voitures/Edit/5
@@ -183,9 +201,9 @@ namespace Projet5ApplicationDotNet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CodeVIN,Finition,DateAchat,PrixAchat,Disponible,DateVente,Photo,Description,PrixVente")] Voiture voiture)
+        public async Task<IActionResult> Edit(EditVoitureViewModel model, int id)
         {
-            if (id != voiture.Id)
+            if (id != model.IdVoiture)
             {
                 return NotFound();
             }
@@ -194,12 +212,83 @@ namespace Projet5ApplicationDotNet.Controllers
             {
                 try
                 {
+                    var marque = await _context.Marques
+                        .Where(p => p.Nom.ToLower() == model.Marque.ToLower())
+                        .FirstOrDefaultAsync();
+                    if (marque == null)
+                    {
+                        marque = new Marque()
+                        {
+                            Nom = model.Marque
+                        };
+                        _context.Add(marque);
+                    }
+
+                    var modele = await _context.Modeles
+                        .Where(p => p.Annee == model.Annee && p.Nom.ToLower() == model.Modele.ToLower() && p.UneMarque == marque)
+                        .FirstOrDefaultAsync();
+                    if (modele == null)
+                    {
+                        modele = new Modele()
+                        {
+                            Annee = model.Annee,
+                            Nom = model.Modele,
+                            UneMarque = marque
+                        };
+                        _context.Add(modele);
+                    }
+
+                    await _context.SaveChangesAsync();
+                    string fileName = "";
+                    if (model.Photo != null)
+                    {
+                        // Définir le dossier de stockage (wwwroot/uploads)
+                        string uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+
+                        // Vérifier si le dossier existe, sinon le créer
+                        if (!Directory.Exists(uploadPath))
+                        {
+                            Directory.CreateDirectory(uploadPath);
+                        }
+
+                        // Générer un nom unique pour l'image
+                        fileName = Guid.NewGuid().ToString() + Path.GetExtension(model.Photo.FileName);
+                        string filePath = Path.Combine(uploadPath, fileName);
+
+                        // Enregistrer l'image sur le serveur
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await model.Photo.CopyToAsync(stream);
+                        }
+                        model.PhotoS = fileName;
+                    }
+                    else
+                    {
+                        var UneVoiture = _context.Voitures.AsNoTracking().FirstOrDefault(v => v.Id == id);
+                        model.PhotoS = UneVoiture.Photo;
+                    }
+
+                    var voiture = new Voiture()
+                    {
+                        Id = model.IdVoiture,
+                        CodeVIN = model.CodeVIN,
+                        Finition = model.Finition,
+                        DateAchat = model.DateAchat,
+                        PrixAchat = model.PrixAchat,
+                        Disponible = model.Disponible,
+                        DateVente = model.DateVente,
+                        Photo = model.PhotoS,
+                        Description = model.Description,
+                        PrixVente = model.PrixVente,
+                        UnModele = modele
+                    };
+
                     _context.Update(voiture);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!VoitureExists(voiture.Id))
+                    if (!VoitureExists(model.IdVoiture))
                     {
                         return NotFound();
                     }
@@ -210,7 +299,7 @@ namespace Projet5ApplicationDotNet.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(voiture);
+            return View(model);
         }
 
         // GET: Voitures/Delete/5
