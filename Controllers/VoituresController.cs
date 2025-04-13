@@ -190,6 +190,7 @@ namespace Projet5ApplicationDotNet.Controllers
                 Disponible = voiture.Disponible,
                 DateVente = voiture.DateVente,
                 PrixVente = voiture.PrixVente,
+                PrixAchat = voiture.PrixAchat,
                 Description = voiture.Description,
                 Annee = voiture.UnModele.Annee,
                 Marque = voiture.UnModele.UneMarque.Nom,
@@ -319,19 +320,32 @@ namespace Projet5ApplicationDotNet.Controllers
             }
 
             var voiture = await _context.Voitures
+                .Include(v => v.UnModele)
+                .Include(v => v.UnModele.UneMarque)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (voiture == null)
             {
                 return NotFound();
             }
 
-            return View(voiture);
+            var VoitureViewModel = new VoitureViewModel
+            {
+                IdVoiture = voiture.Id,
+                PrixVente = voiture.PrixVente,
+                Annee = voiture.UnModele.Annee,
+                Marque = voiture.UnModele.UneMarque.Nom,
+                Modele = voiture.UnModele.Nom,
+                Finition = voiture.Finition,
+                PhotoS = voiture.Photo
+            };
+
+            return View(VoitureViewModel);
         }
 
         // POST: Voitures/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int IdVoiture)
         {
             if (_context.Voitures == null)
             {
@@ -340,7 +354,7 @@ namespace Projet5ApplicationDotNet.Controllers
             var voiture = await _context.Voitures
                 .Include(v => v.UnModele)
                 .Include(v => v.UnModele.UneMarque)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == IdVoiture);
             if (voiture != null)
             {
                 _context.Voitures.Remove(voiture);
