@@ -4,12 +4,32 @@
     ViewData["Title"] = "Voitures";
 }
 
-<h1>Voitures</h1>
+<h1 class="color-796157 text-center mb-5 fst-italic">Nos voitures</h1>
 
-<p>
-    <a asp-action="Create">Ajouter</a>
+<p class="text-center mb-5">
+    <a asp-action="Create" class="btn bg-D9A963 ft-DM">+ ajouter une voiture</a>
 </p>
-<table class="table">
+<div class="row">
+    <div class="d-flex flex-column flex-md-row flex-md-wrap">
+        @foreach (var item in Model)
+        {
+            <div class="d-flex w-50 mb-5">
+                <div class="d-flex flex-column justify-content-center w-75">
+                    <img class="w-50 align-self-center" src="~/uploads/@Html.DisplayFor(modelItem => item.PhotoS)" />
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                    <h3 class="color-2C1810 mb-4">@Html.DisplayFor(modelItem => item.PrixVente) €</h3>
+                    <p class="color-796157 ft-DM">@Html.DisplayFor(modelItem => item.Annee)</p>
+                    <p class="color-796157 ft-DM">@Html.DisplayFor(modelItem => item.Marque)</p>
+                    <p class="color-796157 ft-DM">@Html.DisplayFor(modelItem => item.Modele)</p>
+                    <p class="color-796157 ft-DM">@Html.DisplayFor(modelItem => item.Finition)</p>
+                    <a asp-action="Details" asp-route-id="@item.IdVoiture" class="color-796157 ft-DM text-decoration-underline">Détails --></a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@* <table class="table">
     <thead>
         <tr>
             <th>
@@ -62,4 +82,4 @@
             </tr>
         }
     </tbody>
-</table>
+</table> *@

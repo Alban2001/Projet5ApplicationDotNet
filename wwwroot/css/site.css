@@ -5,24 +5,49 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: "Libre Baskerville", serif;
+}
+
+.ft-DM{
+    font-family: 'DM Sans';
 }
 
 .bg-D9A963 {
     background-color: #D9A963;
 }
 
-.bg-2C1810 {
-    background-color: #2C1810;
+.color-D9A963 {
+    color: #D9A963;
 }
 
 .bg-2C1810 {
     background-color: #2C1810;
+}
+
+.color-2C1810 {
+    color: #2C1810;
+}
+
+.border-color-2C1810 {
+    border-color: #2C1810;
 }
 
 .bg-B99056 {
     background-color: #B99056;
     color: white;
+}
+
+.color-B99056 {
+    color: #B99056;
+}
+
+.color-796157 {
+    color: #796157;
+}
+
+.color-929292 {
+    color: #929292;
 }
 
 @media (min-width: 768px) {

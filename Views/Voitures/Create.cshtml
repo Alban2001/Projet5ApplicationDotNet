@@ -1,55 +1,51 @@
-﻿@model Projet5ApplicationDotNet.Models.VoitureViewModel
+﻿@model Projet5ApplicationDotNet.Models.CreateVoitureViewModel
 
 @{
     ViewData["Title"] = "Ajouter une voiture";
 }
 
-<h1 class="text-center">Ajouter une voiture</h1>
-<hr />
-<p class="text-center">Tous les champs sont obligatoires</p>
+<a asp-action="Index" class="color-796157 text-decoration-underline ft-DM"><-- Retour à la liste</a>
+<h1 class="text-center color-796157 fst-italic">Ajouter une voiture</h1>
+<p class="text-center">tous les champs sont obligatoires</p>
 <div class="row justify-content-center">
     <div class="col-md-4">
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group mt-4">
-                <label asp-for="PrixVente" class="control-label">Prix de vente</label>
-                <input asp-for="PrixVente" class="form-control" />
+                <label asp-for="PrixVente" class="control-label mb-3">Prix de vente</label>
+                <input asp-for="PrixVente" class="form-control p-3 border-1 border-color-2C1810" />
                 <span asp-validation-for="PrixVente" class="text-danger"></span>
             </div>
             <div class="form-group mt-4">
-                <label asp-for="Annee" class="control-label">Année</label>
-                <input asp-for="Annee" class="form-control" />
+                <label asp-for="Annee" class="control-label mb-3">Année</label>
+                <input asp-for="Annee" class="form-control p-3 border-1 border-color-2C1810" />
                 <span asp-validation-for="Annee" class="text-danger"></span>
             </div>
             <div class="form-group mt-4">
-                <label asp-for="Marque" class="control-label">Marque</label>
-                <input asp-for="Marque" class="form-control" />
+                <label asp-for="Marque" class="control-label mb-3">Marque</label>
+                <input asp-for="Marque" class="form-control p-3 border-1 border-color-2C1810" />
                 <span asp-validation-for="Marque" class="text-danger"></span>
             </div>
             <div class="form-group mt-4">
-                <label asp-for="Modele" class="control-label">Modèle</label>
-                <input asp-for="Modele" class="form-control" />
+                <label asp-for="Modele" class="control-label mb-3">Modèle</label>
+                <input asp-for="Modele" class="form-control p-3 border-1 border-color-2C1810" />
                 <span asp-validation-for="Modele" class="text-danger"></span>
             </div>
             <div class="form-group mt-4">
-                <label asp-for="Finition" class="control-label">Finition</label>
-                <input asp-for="Finition" class="form-control" />
+                <label asp-for="Finition" class="control-label mb-3">Finition</label>
+                <input asp-for="Finition" class="form-control p-3 border-1 border-color-2C1810" />
                 <span asp-validation-for="Finition" class="text-danger"></span>
             </div>
             <div class="form-group mt-4">
-                <label asp-for="Photo" class="control-label">Visuel</label>
-                <input asp-for="Photo" class="form-control" type="file" accept="image/*" />
+                <label asp-for="Photo" class="control-label mb-3">Visuel</label>
+                <input asp-for="Photo" class="form-control p-5 border-1 border-color-2C1810" type="file" accept="image/*" />
                 <span asp-validation-for="Photo" class="text-danger"></span>
             </div>
-            <div class="form-group mt-4">
-                <input type="submit" value="Publier" class="btn bg-D9A963" />
+            <div class="form-group mt-4 d-flex justify-content-center">
+                <input type="submit" value="Publier" class="btn bg-D9A963 ft-DM p-3" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Retour à la liste</a>
 </div>
 
 @section Scripts {
