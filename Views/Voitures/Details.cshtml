@@ -1,20 +1,28 @@
 ﻿@model Projet5ApplicationDotNet.Models.VoitureViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Détails";
 }
 
-<h1>Détails</h1>
-
-<div>
-    <h4>Voiture</h4>
-    <hr />
-    <div class="row align-items-center">
+<div class="mt-5">
+    <a asp-action="Index" class="color-796157 text-decoration-underline ft-DM"><-- Retour à la liste</a>
+    <div class="row align-items-center mt-5">
         <div class="col-md-6">
             <img class="w-100" src="~/uploads/@Html.DisplayFor(model => model.PhotoS)" />
         </div>
         <div class="col-md-6">
-            <div class="d-flex mb-4">
+            <div class="mb-5">
+                <p class="color-2C1810">Vous avez publié cette annonce, vous pouvez le :</p>
+                <a asp-action="Edit" asp-route-id="@Model?.IdVoiture" class="color-929292 me-4">modifier</a> <a asp-action="Delete" asp-route-id="@Model?.IdVoiture" class="text-danger">supprimer</a>
+            </div>
+            <div class="d-flex flex-column justify-content-center">
+                <h3 class="color-2C1810 mb-4">@Html.DisplayFor(model => model.PrixVente) €</h3>
+                <p class="color-796157 ft-DM">@Html.DisplayFor(model => model.Annee)</p>
+                <p class="color-796157 ft-DM">@Html.DisplayFor(model => model.Marque)</p>
+                <p class="color-796157 ft-DM">@Html.DisplayFor(model => model.Modele)</p>
+                <p class="color-796157 ft-DM">@Html.DisplayFor(model => model.Finition)</p>
+            </div>
+           @*  <div class="d-flex mb-4">
                 <label class="fw-bold">@Html.DisplayNameFor(model => model.Marque) : </label>
                 @Html.DisplayFor(model => model.Marque)
             </div>
@@ -71,11 +79,7 @@
                     @Html.DisplayNameFor(model => model.Description) : 
                 </label>
                 @Html.DisplayFor(model => model.Description)
-            </div>
+            </div> *@
         </div>
     </div>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.IdVoiture">Edit</a> |
-    <a asp-action="Index">Back to List</a>
 </div>

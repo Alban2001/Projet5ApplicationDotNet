@@ -152,9 +152,14 @@ namespace Projet5ApplicationDotNet.Controllers
                     Photo = fileName,
                     UnModele = modele
                 };
+
                 _context.Add(UneVoiture);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                ViewData["Titre"] = "Merci !";
+                ViewData["p"] = "votre voiture a été bien publiée";
+
+                return View("Confirmation");
             }
 
             return View(model);
@@ -297,7 +302,10 @@ namespace Projet5ApplicationDotNet.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                ViewData["Titre"] = model.Annee + " " + model.Marque + " " + model.Modele;
+                ViewData["p"] = "a bien été mis à jour";
+
+                return View("Confirmation");
             }
             return View(model);
         }
@@ -329,14 +337,21 @@ namespace Projet5ApplicationDotNet.Controllers
             {
                 return Problem("Entity set 'ApplicationDbContext.Voitures'  is null.");
             }
-            var voiture = await _context.Voitures.FindAsync(id);
+            var voiture = await _context.Voitures
+                .Include(v => v.UnModele)
+                .Include(v => v.UnModele.UneMarque)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (voiture != null)
             {
                 _context.Voitures.Remove(voiture);
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            ViewData["Titre"] = voiture.UnModele.Annee + " " + voiture.UnModele.UneMarque.Nom + " " + voiture.UnModele.Nom;
+            ViewData["p"] = "a bien été supprimée";
+
+            return View("Confirmation");
         }
 
         private bool VoitureExists(int id)
