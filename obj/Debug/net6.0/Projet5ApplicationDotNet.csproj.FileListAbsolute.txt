@@ -350,3 +350,8 @@ D:\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\Projets\Proj
 D:\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\Projets\Projet5DotNet\bin\Debug\net6.0\runtimes\win-x64\native\e_sqlite3.dll
 D:\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\Projets\Projet5DotNet\bin\Debug\net6.0\runtimes\win-x86\native\e_sqlite3.dll
 D:\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\Projets\Projet5DotNet\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+D:\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\Projets\Projet5DotNet\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\Projets\Projet5DotNet\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\Projets\Projet5DotNet\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll
+D:\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\Projets\Projet5DotNet\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+D:\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\Projets\Projet5DotNet\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll

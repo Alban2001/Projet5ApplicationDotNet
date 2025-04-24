@@ -265,6 +265,10 @@
       "PackagePath": "staticwebassets\\uploads\\3e629e6a-267a-4cce-bd33-77bdce591757.PNG"
     },
     {
+      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\550cdce9-3b92-47ff-833a-1129440116fd.jpg",
+      "PackagePath": "staticwebassets\\uploads\\550cdce9-3b92-47ff-833a-1129440116fd.jpg"
+    },
+    {
       "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\57c44735-2868-46dd-b65d-ae9f9187e97b.PNG",
       "PackagePath": "staticwebassets\\uploads\\57c44735-2868-46dd-b65d-ae9f9187e97b.PNG"
     },
@@ -295,6 +299,10 @@
     {
       "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\dcf6f715-8321-4fd5-83ca-2b2c1ad8ddbd.jpg",
       "PackagePath": "staticwebassets\\uploads\\dcf6f715-8321-4fd5-83ca-2b2c1ad8ddbd.jpg"
+    },
+    {
+      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\f116422d-c1bf-4303-a8d9-f983cc99843b.jpg",
+      "PackagePath": "staticwebassets\\uploads\\f116422d-c1bf-4303-a8d9-f983cc99843b.jpg"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Projet5ApplicationDotNet.Microsoft.AspNetCore.StaticWebAssets.props",

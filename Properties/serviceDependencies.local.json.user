@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "mssql2": {
+      "restored": true,
+      "restoreTime": "2025-04-22T08:57:13.7131665Z"
+    },
     "mssql1": {
       "restored": true,
       "restoreTime": "2025-02-22T16:48:23.8591006Z"
