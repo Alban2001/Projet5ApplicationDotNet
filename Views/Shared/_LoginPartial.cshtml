@@ -10,21 +10,25 @@
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Bonjour @User.Identity?.Name!</a>
         </li>
         @* <li class="nav-item">
-            <form class="form-inline" asp-area="Identity" asp-page="/Voiture/Add" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-dark">Ajouter une voiture</button>
-            </form>
-        </li> *@
+    <form class="form-inline" asp-area="Identity" asp-page="/Voiture/Add" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+    <button type="submit" class="nav-link btn btn-link text-dark">Ajouter une voiture</button>
+    </form>
+    </li> *@
+
+        @if (User.IsInRole("ADMIN"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Voitures" asp-action="Create" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">Ajouter une voiture</a>
+            </li>
+        }
         <li class="nav-item">
-                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
                 <button type="submit" class="nav-link btn btn-link text-dark">Se déconnecter</button>
             </form>
         </li>
     }
     else
     {
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Voitures" asp-action="Create" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">Ajouter une voiture</a>
-        </li>
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">S'inscrire</a>
         </li>

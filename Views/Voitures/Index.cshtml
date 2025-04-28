@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<Projet5ApplicationDotNet.Models.VoitureViewModel>
+@using Microsoft.AspNetCore.Identity
+@using Projet5ApplicationDotNet.Areas.Identity.Data
+@inject SignInManager<Projet5ApplicationDotNetUser> SignInManager
 
 @{
     ViewData["Title"] = "Voitures";
@@ -6,9 +9,12 @@
 
 <h1 class="color-796157 text-center mb-5 fst-italic">Nos voitures</h1>
 
-<p class="text-center mb-5">
-    <a asp-action="Create" class="btn bg-D9A963 ft-DM">+ ajouter une voiture</a>
-</p>
+@if (User.IsInRole("ADMIN"))
+{
+    <p class="text-center mb-5">
+        <a asp-action="Create" class="btn bg-D9A963 ft-DM">+ ajouter une voiture</a>
+    </p>
+}
 <div class="row">
     <div class="d-flex flex-column flex-md-row flex-md-wrap">
         @foreach (var item in Model)

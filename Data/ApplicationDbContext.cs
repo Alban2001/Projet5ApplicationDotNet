@@ -21,12 +21,30 @@ namespace Projet5ApplicationDotNet.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<IdentityUserLogin<string>>()
-                .HasNoKey();
-            modelBuilder.Entity<IdentityUserRole<string>>()
-                .HasNoKey();
-            modelBuilder.Entity<IdentityUserToken<string>>()
-                .HasNoKey();
+            modelBuilder.Entity<IdentityUserLogin<string>>(entity =>
+            {
+                entity.HasKey(l => new { l.LoginProvider, l.ProviderKey }); // 👈 Clé primaire composite
+
+                entity.HasOne<Projet5ApplicationDotNetUser>()
+                      .WithMany()
+                      .HasForeignKey(l => l.UserId)
+                      .IsRequired()
+                      .OnDelete(DeleteBehavior.Cascade); // 👈 Clé étrangère sur UserId
+            });
+            modelBuilder.Entity<IdentityUserRole<string>>(userRole =>
+            {
+                userRole.HasKey(ur => new { ur.UserId, ur.RoleId }); 
+            });
+            modelBuilder.Entity<IdentityUserToken<string>>(entity =>
+            {
+                entity.HasKey(t => new { t.UserId, t.LoginProvider, t.Name }); // 👈 Clé primaire composée
+
+                entity.HasOne<Projet5ApplicationDotNetUser>()
+                      .WithMany()
+                      .HasForeignKey(t => t.UserId)
+                      .IsRequired()
+                      .OnDelete(DeleteBehavior.Cascade); // 👈 Clé étrangère sur UserId
+            });
         }
     }
 }

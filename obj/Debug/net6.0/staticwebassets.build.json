@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "aS0KuDitShl0N9EhyK6grnWCuENeOU3XZrwCY4j+AW8=",
+  "Hash": "gnxEupBcSt7FlmQVhr4eEvl8GwoUAZbcMglmM9TPrrw=",
   "Source": "Projet5ApplicationDotNet",
   "BasePath": "_content/Projet5ApplicationDotNet",
   "Mode": "Default",
@@ -2466,6 +2466,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\57c44735-2868-46dd-b65d-ae9f9187e97b.PNG"
+    },
+    {
+      "Identity": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\5a2d3643-4a26-4a3b-bfc8-9df430ae37bf.jpg",
+      "SourceId": "Projet5ApplicationDotNet",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\",
+      "BasePath": "_content/Projet5ApplicationDotNet",
+      "RelativePath": "uploads/5a2d3643-4a26-4a3b-bfc8-9df430ae37bf.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\5a2d3643-4a26-4a3b-bfc8-9df430ae37bf.jpg"
     },
     {
       "Identity": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\62788c75-6e18-4682-95b8-5b9d95d81357.jpg",

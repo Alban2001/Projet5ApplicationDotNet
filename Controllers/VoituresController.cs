@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Projet5ApplicationDotNet.Data;
 using Projet5ApplicationDotNet.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Projet5ApplicationDotNet.Controllers
 {
@@ -23,10 +24,22 @@ namespace Projet5ApplicationDotNet.Controllers
         // GET: Voitures
         public async Task<IActionResult> Index()
         {
+            // Liste des voitures disponibles pour les visiteurs
             var voitures = await _context.Voitures
+                .Where(v => v.Disponible.Equals(true))
                 .Include(v => v.UnModele)
                 .Include(v => v.UnModele.UneMarque)
                 .ToListAsync();
+
+            // Sinon liste de toutes les voitures pour le vendeur
+            if (User.IsInRole("ADMIN"))
+            { 
+                voitures = await _context.Voitures
+                .Include(v => v.UnModele)
+                .Include(v => v.UnModele.UneMarque)
+                .ToListAsync();
+
+            }
             var VoitureViewModel = voitures.Select(v => new VoitureViewModel
             {
                 IdVoiture = v.Id,
@@ -85,6 +98,7 @@ namespace Projet5ApplicationDotNet.Controllers
         }
 
         // GET: Voitures/Create
+        [Authorize (Roles="ADMIN")]
         public async Task<IActionResult> Create()
         {
             return View();
@@ -95,6 +109,7 @@ namespace Projet5ApplicationDotNet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Create(CreateVoitureViewModel model)
         {
             if (ModelState.IsValid)
@@ -166,6 +181,7 @@ namespace Projet5ApplicationDotNet.Controllers
         }
 
         // GET: Voitures/Edit/5
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Voitures == null)
@@ -207,6 +223,7 @@ namespace Projet5ApplicationDotNet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Edit(EditVoitureViewModel model, int id)
         {
             if (id != model.IdVoiture)
@@ -312,6 +329,7 @@ namespace Projet5ApplicationDotNet.Controllers
         }
 
         // GET: Voitures/Delete/5
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Voitures == null)
@@ -345,6 +363,7 @@ namespace Projet5ApplicationDotNet.Controllers
         // POST: Voitures/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> DeleteConfirmed(int IdVoiture)
         {
             if (_context.Voitures == null)

@@ -12,6 +12,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<Projet5ApplicationDotNetUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
@@ -61,4 +62,55 @@ app.MapControllerRoute(
     pattern: "{controller=Voitures}/{action=Index}/{id?}");
 app.MapRazorPages();
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var userManager = services.GetRequiredService<UserManager<Projet5ApplicationDotNetUser>>();
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+    string roleName = "ADMIN";
+    string adminEmail = "admin@express-voitures.fr";
+    string adminPassword = "Admin126754?!"; 
+
+    // 1. Création du rôle Admin s’il n’existe pas
+    if (!await roleManager.RoleExistsAsync(roleName))
+    {
+        await roleManager.CreateAsync(new IdentityRole(roleName));
+    }
+
+    // 2. Création de l'utilisateur admin s’il n’existe pas
+    var adminUser = await userManager.FindByEmailAsync(adminEmail);
+    if (adminUser == null)
+    {
+        var newAdmin = new Projet5ApplicationDotNetUser
+        {
+            UserName = adminEmail,
+            Email = adminEmail,
+            EmailConfirmed = true,
+            PhoneNumberConfirmed = true,
+            TwoFactorEnabled = false,
+            LockoutEnabled = false,
+            AccessFailedCount = 0
+        };
+
+        var createResult = await userManager.CreateAsync(newAdmin, adminPassword);
+
+        if (createResult.Succeeded)
+        {
+            // 3. Ajouter l'utilisateur au rôle Admin
+            var user = await userManager.FindByEmailAsync(adminEmail);
+            await userManager.AddToRoleAsync(user, roleName);
+        }
+        else
+        {
+            foreach (var error in createResult.Errors)
+            {
+                Console.WriteLine($"Erreur création compte admin : {error.Description}");
+            }
+        }
+    }
+}
+
 app.Run();
+
