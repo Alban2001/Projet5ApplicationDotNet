@@ -25,7 +25,7 @@
 
 ## Contexte
 
-Ce projet a été conçu dans le cadre de ma formation de développeur d'applications Back-end .NET (OpenClassrooms) sur la création d'un site interne afin que le client qui est propriétaire d'une concession de voitures puisse gérer l'inventaire de ses voitures à vendre par la suite. Il pourra ajouter, modifier et supprimer une voiture. Seuls les voitures disponibles seront publiées et vus par tous les visiteurs du site. 
+Ce projet a été conçu dans le cadre de ma formation de développeur d'applications Back-end .NET (OpenClassrooms) sur la création d'un site interne afin que le client qui est propriétaire d'une concession de voitures puisse gérer l'inventaire de ses voitures à vendre par la suite. Il pourra ajouter, modifier et supprimer une voiture. Seules les voitures disponibles seront publiées et vues par tous les visiteurs du site. 
 
 ## Installation
 
@@ -37,14 +37,14 @@ Ce projet a été conçu dans le cadre de ma formation de développeur d'application
 
 => Ce projet contient la version 8.0.400, pour vérifier cela, dans la console, tapez la commande : `dotnet --version`
 
-### Réstaurer les dépendances
+### Restaurer les dépendances
 
-=> Veuillez effectuer la commande : `dotnet restore` afin de pouvoir avoir tous les packages Nuget et composants installés pour éviter toutes erreurs de librairies manquantes.
+=> Veuillez effectuer la commande : `dotnet restore` afin de pouvoir avoir tous les packages Nuget et composants installés pour éviter toute erreur de librairie manquante.
 
 ### Configurer la base de données
 
-=> Les entités et le schéma déja construit, vous n'avez plus qu'à effectuer la commande suivante : `Update-Database -Context ApplicationDbContext` afin de pouvoir la créer et l'avoir en local
-=> Une fois la base créee, modifier la chaine de connexion dans le fichier `appsettings.json` :
+=> Les entités et le schéma étant déja construit, vous n'avez plus qu'à effectuer la commande suivante : `Update-Database -Context ApplicationDbContext` afin de pouvoir la créer et l'avoir en local
+=> Une fois la base crée, modifier la chaîne de connexion dans le fichier `appsettings.json` :
 
 ```
     "DefaultConnection": "Server=;Database=NOM_DATABASE;Trusted_Connection=True;MultipleActiveResultSets=true",
@@ -52,10 +52,10 @@ Ce projet a été conçu dans le cadre de ma formation de développeur d'application
 
 ### Compiler et lancer l'application
 
-=> Cliquez sur le bouton d'exécution et choisissez IIS Express. Une fois l'application lancée, vous serez un simple visiteur et juste la possibilité de visualiser les voitures et leurs détails.
+=> Cliquez sur le bouton d'exécution et choisissez IIS Express comme option. Une fois l'application lancée, vous serez un simple visiteur et juste la possibilité de visualiser les voitures et leurs détails.
 
 ### Dossier Upload / Compte Administrateur
-=> Les images pour les voitures seront créees automatiquement dès que vous aurez ajouté votre première voiture.
+=> Les images des voitures seront créees automatiquement dès que vous aurez ajouté votre première voiture.
 => Le compte administrateur sera inséré dans la base de données lors du lancement de l'application.
 
 
