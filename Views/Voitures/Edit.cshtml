@@ -1,0 +1,90 @@
+﻿@model Projet5ApplicationDotNet.Models.EditVoitureViewModel
+@using System.Text.Encodings.Web;
+
+@{
+    ViewData["Title"] = "Modifier";
+}
+
+<a asp-action="Index" class="color-796157 text-decoration-none ft-DM"><-- Retour</a>
+<div class="row mt-5">
+    <div class="col-md-12">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdVoiture" />
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="w-100" src="~/uploads/@Html.DisplayFor(model => model.PhotoS)" />
+                </div>
+                <div class="col-md-4 d-flex flex-column">
+                    <div class="form-group mb-4 align-self-center">
+                        <label asp-for="CodeVIN" class="control-label"></label>
+                        <input asp-for="CodeVIN" class="form-control p-3 border-1 border-color-2C1810" />
+                        <span asp-validation-for="CodeVIN" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-4 align-self-center">
+                        <label asp-for="Finition" class="control-label"></label>
+                        <input asp-for="Finition" class="form-control p-3 border-1 border-color-2C1810" />
+                        <span asp-validation-for="Finition" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-4 align-self-center">
+                        <label asp-for="Marque" class="control-label"></label>
+                        <input asp-for="Marque" class="form-control p-3 border-1 border-color-2C1810" />
+                        <span asp-validation-for="Marque" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-4 align-self-center">
+                        <label asp-for="Modele" class="control-label"></label>
+                        <input asp-for="Modele" class="form-control p-3 border-1 border-color-2C1810" />
+                        <span asp-validation-for="Modele" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-4 align-self-center">
+                        <label asp-for="Annee" class="control-label"></label>
+                        <input asp-for="Annee" class="form-control p-3 border-1 border-color-2C1810" />
+                        <span asp-validation-for="Annee" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-4 align-self-center">
+                        <label asp-for="DateAchat" class="control-label"></label>
+                        <input asp-for="DateAchat" class="form-control p-3 border-1 border-color-2C1810" type="date" />
+                        <span asp-validation-for="DateAchat" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-4 align-self-center">
+                        <label asp-for="PrixAchat" class="control-label"></label>
+                        <input asp-for="PrixAchat" class="form-control p-3 border-1 border-color-2C1810" />
+                        <span asp-validation-for="PrixAchat" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check mb-4 align-self-center">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Disponible" /> @Html.DisplayNameFor(model => model.Disponible)
+                        </label>
+                    </div>
+                    <div class="form-group mb-4 align-self-center">
+                        <label asp-for="DateVente" class="control-label"></label>
+                        <input asp-for="DateVente" class="form-control p-3 border-1 border-color-2C1810" type="date" />
+                        <span asp-validation-for="DateVente" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-4 align-self-center">
+                        <label asp-for="Photo" class="control-label"></label>
+                        <input asp-for="Photo" class="form-control p-3 border-1 border-color-2C1810" type="file" accept="image/*" />
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-4 align-self-center">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description" class="form-control p-3 border-1 border-color-2C1810"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-4 align-self-center">
+                        <label asp-for="PrixVente" class="control-label"></label>
+                        <input asp-for="PrixVente" class="form-control p-3 border-1 border-color-2C1810" />
+                        <span asp-validation-for="PrixVente" class="text-danger"></span>
+                    </div>
+                    <div class="form-group d-flex justify-content-center">
+                        <input type="submit" value="Sauvegarder" class="btn bg-D9A963 ft-DM p-3" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

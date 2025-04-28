@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Projet5ApplicationDotNet.Models.VoitureViewModel>
+@using Microsoft.AspNetCore.Identity
+@using Projet5ApplicationDotNet.Areas.Identity.Data
+@inject SignInManager<Projet5ApplicationDotNetUser> SignInManager
+
+@{
+    ViewData["Title"] = "Voitures";
+}
+
+<h1 class="color-796157 text-center mb-5 fst-italic">Nos voitures</h1>
+
+@if (User.IsInRole("ADMIN"))
+{
+    <p class="text-center mb-5">
+        <a asp-action="Create" class="btn bg-D9A963 ft-DM">+ ajouter une voiture</a>
+    </p>
+}
+<div class="row">
+    <div class="d-flex flex-column flex-md-row flex-md-wrap">
+        @foreach (var item in Model)
+        {
+            <div class="d-flex w-50 mb-5">
+                <div class="d-flex flex-column justify-content-center w-75">
+                    <img class="w-50 align-self-center" src="~/uploads/@Html.DisplayFor(modelItem => item.PhotoS)" />
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                    <h3 class="color-2C1810 mb-4">@Html.DisplayFor(modelItem => item.PrixVente) €</h3>
+                    <p class="color-796157 ft-DM">@Html.DisplayFor(modelItem => item.Annee)</p>
+                    <p class="color-796157 ft-DM">@Html.DisplayFor(modelItem => item.Marque)</p>
+                    <p class="color-796157 ft-DM">@Html.DisplayFor(modelItem => item.Modele)</p>
+                    <p class="color-796157 ft-DM">@Html.DisplayFor(modelItem => item.Finition)</p>
+                    <a asp-action="Details" asp-route-id="@item.IdVoiture" class="color-796157 ft-DM text-decoration-underline">Détails --></a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@* <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Finition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrixVente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marque)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modele)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Annee)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Finition)
+                </td>
+                <td>
+                    <img src="~/uploads/@Html.DisplayFor(modelItem => item.PhotoS)" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrixVente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marque)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modele)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Annee)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdVoiture">Modifier</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdVoiture">Détails</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdVoiture">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> *@

@@ -1,0 +1,33 @@
+﻿@model Projet5ApplicationDotNet.Models.VoitureViewModel
+@using Microsoft.AspNetCore.Identity
+@using Projet5ApplicationDotNet.Areas.Identity.Data
+@inject SignInManager<Projet5ApplicationDotNetUser> SignInManager
+
+@{
+    ViewData["Title"] = "Détails";
+}
+
+<div class="mt-5">
+    <a asp-action="Index" class="color-796157 text-decoration-none ft-DM"><-- Retour</a>
+    <div class="row align-items-center mt-5">
+        <div class="col-md-6">
+            <img class="w-100" src="~/uploads/@Html.DisplayFor(model => model.PhotoS)" />
+        </div>
+        <div class="col-md-6">
+            @if (User.IsInRole("ADMIN"))
+            {
+                <div class="mb-5">
+                    <p class="color-2C1810">Vous avez publié cette annonce, vous pouvez le :</p>
+                    <a asp-action="Edit" asp-route-id="@Model?.IdVoiture" class="color-929292 me-4">modifier</a> <a asp-action="Delete" asp-route-id="@Model?.IdVoiture" class="text-danger">supprimer</a>
+                </div>
+            }
+            <div class="d-flex flex-column justify-content-center">
+                <h3 class="color-2C1810 mb-4">@Html.DisplayFor(model => model.PrixVente) €</h3>
+                <p class="color-796157 ft-DM">@Html.DisplayFor(model => model.Annee)</p>
+                <p class="color-796157 ft-DM">@Html.DisplayFor(model => model.Marque)</p>
+                <p class="color-796157 ft-DM">@Html.DisplayFor(model => model.Modele)</p>
+                <p class="color-796157 ft-DM">@Html.DisplayFor(model => model.Finition)</p>
+            </div>
+        </div>
+    </div>
+</div>
