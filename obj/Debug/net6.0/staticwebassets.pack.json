@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\js\\reparation.js",
+      "PackagePath": "staticwebassets\\js\\reparation.js"
+    },
+    {
       "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -303,6 +307,10 @@
     {
       "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\dcf6f715-8321-4fd5-83ca-2b2c1ad8ddbd.jpg",
       "PackagePath": "staticwebassets\\uploads\\dcf6f715-8321-4fd5-83ca-2b2c1ad8ddbd.jpg"
+    },
+    {
+      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\e7c3fb76-2a92-405f-851f-a22d25b0165f.jpg",
+      "PackagePath": "staticwebassets\\uploads\\e7c3fb76-2a92-405f-851f-a22d25b0165f.jpg"
     },
     {
       "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\f116422d-c1bf-4303-a8d9-f983cc99843b.jpg",

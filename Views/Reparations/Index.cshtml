@@ -1,0 +1,79 @@
+﻿@model Projet5ApplicationDotNet.Models.ReparationViewModel
+
+@{
+    ViewData["Title"] = "Liste des réparations";
+}
+
+<h1 class="mb-5">Liste des réparations</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cout)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Commentaire)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListeReparation)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cout)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Commentaire)
+                </td>
+                <td>
+                    <input class="inputH-delete" type="hidden" value="@item.Id" />
+                    <button type="button" class="btn btn-danger btn-delete-rep" data-bs-toggle="modal" data-bs-target="#modalDeleteRep">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </td>
+            </tr>
+        }
+
+        <form asp-action="Create" method="post">
+        <tr>
+            <td>
+                <input asp-for="Cout" class="form-control" />
+                <span asp-validation-for="Cout" class="text-danger"></span>
+            </td>
+            <td>
+                <input asp-for="Commentaire" class="form-control" />
+                <span asp-validation-for="Commentaire" class="text-danger"></span>
+            </td>
+            <td>
+                <button class="btn bg-D9A963 ft-DM" type="submit"><i class="fa-solid fa-plus"></i></button>
+            </td>
+        </tr>
+        </form>
+    </tbody>
+</table>
+<div class="modal fade" id="modalDeleteRep" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Suppression de cette réparation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Etes-vous sûr de vouloir supprimer définitivement cette réparation ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+                <a id="lienDelete" class="btn btn-danger" asp-action="DeleteConfirmed">Oui</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        <script src="~/js/reparation.js"></script>
+    }
+}
