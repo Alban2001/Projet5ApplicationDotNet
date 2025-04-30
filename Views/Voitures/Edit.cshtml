@@ -13,6 +13,7 @@
             <input type="hidden" asp-for="IdVoiture" />
             <div class="row">
                 <div class="col-md-6">
+                    <h2><strong>Prix de vente</strong> : @Html.DisplayFor(model => model.PrixVente) €</h2>
                     <img class="w-100" src="~/uploads/@Html.DisplayFor(model => model.PhotoS)" />
                 </div>
                 <div class="col-md-4 d-flex flex-column">
@@ -70,11 +71,6 @@
                         <label asp-for="Description" class="control-label"></label>
                         <textarea asp-for="Description" class="form-control p-3 border-1 border-color-2C1810"></textarea>
                         <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mb-4 align-self-center">
-                        <label asp-for="PrixVente" class="control-label"></label>
-                        <input asp-for="PrixVente" class="form-control p-3 border-1 border-color-2C1810" />
-                        <span asp-validation-for="PrixVente" class="text-danger"></span>
                     </div>
                     <div class="form-group d-flex justify-content-center">
                         <input type="submit" value="Sauvegarder" class="btn bg-D9A963 ft-DM p-3" />

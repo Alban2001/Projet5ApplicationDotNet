@@ -55,8 +55,7 @@ Ce projet a été conçu dans le cadre de ma formation de développeur d'application
 => Cliquez sur le bouton d'exécution et choisissez IIS Express comme option. Une fois l'application lancée, vous serez un simple visiteur et juste la possibilité de visualiser les voitures et leurs détails.
 
 ### Dossier Upload / Compte Administrateur
-=> Les images des voitures seront créees automatiquement dès que vous aurez ajouté votre première voiture.
-=> Le compte administrateur sera inséré dans la base de données lors du lancement de l'application.
+=> Les photos des voitures et le compte administrateur seront créees automatiquement lors du lancement de l'application.
 
 
 ## Guide d'utilisation

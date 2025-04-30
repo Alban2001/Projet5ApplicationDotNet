@@ -34,6 +34,7 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Lockout.MaxFailedAccessAttempts = 3;
     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
 });
+builder.Services.AddSession();
 
 var app = builder.Build();
 
@@ -53,7 +54,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -110,6 +111,15 @@ using (var scope = app.Services.CreateScope())
             }
         }
     }
+}
+
+// Définir le dossier de stockage (wwwroot/uploads)
+string uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+
+// Vérifier si le dossier existe, sinon le créer
+if (!Directory.Exists(uploadPath))
+{
+    Directory.CreateDirectory(uploadPath);
 }
 
 app.Run();

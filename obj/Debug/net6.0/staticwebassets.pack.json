@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\js\\reparation.js",
+      "PackagePath": "staticwebassets\\js\\reparation.js"
+    },
+    {
       "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -245,68 +249,12 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\045ea773-3d3e-4b33-9a87-cfa783c6eaa5.jpg",
-      "PackagePath": "staticwebassets\\uploads\\045ea773-3d3e-4b33-9a87-cfa783c6eaa5.jpg"
+      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\09383c4d-73c2-44f0-a708-85f225920ef1.jpg",
+      "PackagePath": "staticwebassets\\uploads\\09383c4d-73c2-44f0-a708-85f225920ef1.jpg"
     },
     {
-      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\0d852e08-d4a0-48e6-a7d4-55089e024de2.jpg",
-      "PackagePath": "staticwebassets\\uploads\\0d852e08-d4a0-48e6-a7d4-55089e024de2.jpg"
-    },
-    {
-      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\15f610b6-9800-4c4d-bfd2-5613eb21fa35.jpg",
-      "PackagePath": "staticwebassets\\uploads\\15f610b6-9800-4c4d-bfd2-5613eb21fa35.jpg"
-    },
-    {
-      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\2c8bded0-23a0-4e8e-a8ac-3fdba5c16786.jpg",
-      "PackagePath": "staticwebassets\\uploads\\2c8bded0-23a0-4e8e-a8ac-3fdba5c16786.jpg"
-    },
-    {
-      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\3e629e6a-267a-4cce-bd33-77bdce591757.PNG",
-      "PackagePath": "staticwebassets\\uploads\\3e629e6a-267a-4cce-bd33-77bdce591757.PNG"
-    },
-    {
-      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\550cdce9-3b92-47ff-833a-1129440116fd.jpg",
-      "PackagePath": "staticwebassets\\uploads\\550cdce9-3b92-47ff-833a-1129440116fd.jpg"
-    },
-    {
-      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\57c44735-2868-46dd-b65d-ae9f9187e97b.PNG",
-      "PackagePath": "staticwebassets\\uploads\\57c44735-2868-46dd-b65d-ae9f9187e97b.PNG"
-    },
-    {
-      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\5a2d3643-4a26-4a3b-bfc8-9df430ae37bf.jpg",
-      "PackagePath": "staticwebassets\\uploads\\5a2d3643-4a26-4a3b-bfc8-9df430ae37bf.jpg"
-    },
-    {
-      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\62788c75-6e18-4682-95b8-5b9d95d81357.jpg",
-      "PackagePath": "staticwebassets\\uploads\\62788c75-6e18-4682-95b8-5b9d95d81357.jpg"
-    },
-    {
-      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\6a1130bf-2c99-47c4-8f9f-dee8ce8d473d.jpg",
-      "PackagePath": "staticwebassets\\uploads\\6a1130bf-2c99-47c4-8f9f-dee8ce8d473d.jpg"
-    },
-    {
-      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\73d1b060-1d84-4bdd-aab5-f42c57909e0b.PNG",
-      "PackagePath": "staticwebassets\\uploads\\73d1b060-1d84-4bdd-aab5-f42c57909e0b.PNG"
-    },
-    {
-      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\9cc15b94-46b8-4a01-927a-1a3253535ee0.jpg",
-      "PackagePath": "staticwebassets\\uploads\\9cc15b94-46b8-4a01-927a-1a3253535ee0.jpg"
-    },
-    {
-      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\a0a4bdc1-f4d5-46e5-b69e-ea95cf0012c6.jpg",
-      "PackagePath": "staticwebassets\\uploads\\a0a4bdc1-f4d5-46e5-b69e-ea95cf0012c6.jpg"
-    },
-    {
-      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\d37af5dc-2869-4317-a7c3-422a02523c90.jpg",
-      "PackagePath": "staticwebassets\\uploads\\d37af5dc-2869-4317-a7c3-422a02523c90.jpg"
-    },
-    {
-      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\dcf6f715-8321-4fd5-83ca-2b2c1ad8ddbd.jpg",
-      "PackagePath": "staticwebassets\\uploads\\dcf6f715-8321-4fd5-83ca-2b2c1ad8ddbd.jpg"
-    },
-    {
-      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\f116422d-c1bf-4303-a8d9-f983cc99843b.jpg",
-      "PackagePath": "staticwebassets\\uploads\\f116422d-c1bf-4303-a8d9-f983cc99843b.jpg"
+      "Id": "D:\\DEVELOPPEUR WEB (BACK END DOTNET) - OPENCLASSROOMS - (2024-2026)\\Projets\\Projet5DotNet\\wwwroot\\uploads\\48728df1-b2d5-4186-aae6-7667cc90c84f.jpg",
+      "PackagePath": "staticwebassets\\uploads\\48728df1-b2d5-4186-aae6-7667cc90c84f.jpg"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Projet5ApplicationDotNet.Microsoft.AspNetCore.StaticWebAssets.props",
