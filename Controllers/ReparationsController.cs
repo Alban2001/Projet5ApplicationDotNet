@@ -30,6 +30,7 @@ namespace Projet5ApplicationDotNet.Controllers
             var ReparationViewModel = new ReparationViewModel();
             HttpContext.Session.SetInt32("IdVoiture", id);
 
+            ReparationViewModel.IdVoiture = id;
             ReparationViewModel.ListeReparation = reparations;
 
             return ReparationViewModel != null ?
@@ -58,6 +59,10 @@ namespace Projet5ApplicationDotNet.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(UneReparation);
+
+                voiture.PrixVente = (Convert.ToDouble(voiture.PrixVente) + Convert.ToDouble(reparation.Cout)).ToString();
+                _context.Update(voiture);
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Liste", new {id = IdVoiture });
             }
@@ -68,7 +73,8 @@ namespace Projet5ApplicationDotNet.Controllers
             {
                 Cout = reparation.Cout,
                 Commentaire = reparation.Commentaire,
-                ListeReparation = reparations
+                ListeReparation = reparations,
+                IdVoiture = (int)IdVoiture
             };
 
             return View("Index", ReparationViewModel);
@@ -79,14 +85,19 @@ namespace Projet5ApplicationDotNet.Controllers
         {
             int? IdVoiture = HttpContext.Session.GetInt32("IdVoiture");
 
+            var voiture = await _context.Voitures.FindAsync(IdVoiture);
+
             if (_context.Reparations == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Reparations'  is null.");
             }
+
             var reparation = await _context.Reparations.FindAsync(id);
             if (reparation != null)
             {
+                voiture.PrixVente = (Convert.ToDouble(voiture.PrixVente) - Convert.ToDouble(reparation.Cout)).ToString();
                 _context.Reparations.Remove(reparation);
+                _context.Update(voiture);
             }
             
             await _context.SaveChangesAsync();

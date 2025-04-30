@@ -23,13 +23,13 @@ namespace Projet5ApplicationDotNet.Data
         {
             modelBuilder.Entity<IdentityUserLogin<string>>(entity =>
             {
-                entity.HasKey(l => new { l.LoginProvider, l.ProviderKey }); // 👈 Clé primaire composite
+                entity.HasKey(l => new { l.LoginProvider, l.ProviderKey }); 
 
                 entity.HasOne<Projet5ApplicationDotNetUser>()
                       .WithMany()
                       .HasForeignKey(l => l.UserId)
                       .IsRequired()
-                      .OnDelete(DeleteBehavior.Cascade); // 👈 Clé étrangère sur UserId
+                      .OnDelete(DeleteBehavior.Cascade); 
             });
             modelBuilder.Entity<IdentityUserRole<string>>(userRole =>
             {
@@ -37,13 +37,13 @@ namespace Projet5ApplicationDotNet.Data
             });
             modelBuilder.Entity<IdentityUserToken<string>>(entity =>
             {
-                entity.HasKey(t => new { t.UserId, t.LoginProvider, t.Name }); // 👈 Clé primaire composée
+                entity.HasKey(t => new { t.UserId, t.LoginProvider, t.Name }); 
 
                 entity.HasOne<Projet5ApplicationDotNetUser>()
                       .WithMany()
                       .HasForeignKey(t => t.UserId)
                       .IsRequired()
-                      .OnDelete(DeleteBehavior.Cascade); // 👈 Clé étrangère sur UserId
+                      .OnDelete(DeleteBehavior.Cascade);
             });
         }
     }

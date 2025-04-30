@@ -13,7 +13,7 @@ namespace Projet5ApplicationDotNet.Models
 
         public DateTime? DateAchat { get; set; }
 
-        public string? PrixAchat { get; set; }
+        public string PrixAchat { get; set; }
 
         public bool Disponible { get; set; } = false;
 
@@ -23,7 +23,7 @@ namespace Projet5ApplicationDotNet.Models
 
         public string? Description { get; set; }
 
-        public string PrixVente { get; set; }
+        public string? PrixVente { get; set; }
 
         public Modele UnModele { get; set; }
 

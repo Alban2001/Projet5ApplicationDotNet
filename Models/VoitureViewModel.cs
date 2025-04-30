@@ -15,7 +15,8 @@ namespace Projet5ApplicationDotNet.Models
         public DateTime? DateAchat { get; set; }
 
         [Display(Name = "Prix d'achat")]
-        public string? PrixAchat { get; set; }
+        [Required(ErrorMessage = "Veuillez remplir ce champ !")]
+        public string PrixAchat { get; set; }
 
         public bool Disponible { get; set; } = false;
 
@@ -23,8 +24,7 @@ namespace Projet5ApplicationDotNet.Models
         public DateTime? DateVente { get; set; }
 
         [Display(Name = "Prix de vente")]
-        [Required(ErrorMessage = "Veuillez remplir ce champ !")]
-        public string PrixVente { get; set; }
+        public string? PrixVente { get; set; }
 
         public string? Description { get; set; }
 

@@ -4,7 +4,8 @@
     ViewData["Title"] = "Liste des réparations";
 }
 
-<h1 class="mb-5">Liste des réparations</h1>
+<a asp-action="Details" asp-controller="Voitures" asp-route-id="@Model.IdVoiture" class="color-796157 text-decoration-none ft-DM"><-- Retour</a>
+<h1 class="mb-5 mt-3">Liste des réparations</h1>
 
 <table class="table table-striped">
     <thead>

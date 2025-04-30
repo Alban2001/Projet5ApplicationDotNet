@@ -145,12 +145,6 @@ namespace Projet5ApplicationDotNet.Controllers
                 // Définir le dossier de stockage (wwwroot/uploads)
                 string uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
 
-                // Vérifier si le dossier existe, sinon le créer
-                if (!Directory.Exists(uploadPath))
-                {
-                    Directory.CreateDirectory(uploadPath);
-                }
-
                 // Générer un nom unique pour l'image
                 string fileName = Guid.NewGuid().ToString() + Path.GetExtension(model.Photo.FileName);
                 string filePath = Path.Combine(uploadPath, fileName);
@@ -160,12 +154,16 @@ namespace Projet5ApplicationDotNet.Controllers
                 {
                     await model.Photo.CopyToAsync(stream);
                 }
+
+                string prixVente = (Convert.ToDouble(model.PrixAchat) + 500).ToString();
+
                 var UneVoiture = new Voiture()
                 {
-                    PrixVente = model.PrixVente,
+                    PrixAchat = model.PrixAchat,
                     Finition = model.Finition,
                     Photo = fileName,
-                    UnModele = modele
+                    UnModele = modele,
+                    PrixVente = prixVente
                 };
 
                 _context.Add(UneVoiture);
@@ -263,20 +261,18 @@ namespace Projet5ApplicationDotNet.Controllers
 
                     await _context.SaveChangesAsync();
                     string fileName = "";
+                    var UneVoiture = _context.Voitures.AsNoTracking().FirstOrDefault(v => v.Id == id);
                     if (model.Photo != null)
                     {
                         // Définir le dossier de stockage (wwwroot/uploads)
                         string uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
 
-                        // Vérifier si le dossier existe, sinon le créer
-                        if (!Directory.Exists(uploadPath))
-                        {
-                            Directory.CreateDirectory(uploadPath);
-                        }
-
                         // Générer un nom unique pour l'image
                         fileName = Guid.NewGuid().ToString() + Path.GetExtension(model.Photo.FileName);
                         string filePath = Path.Combine(uploadPath, fileName);
+
+                        string ancienneImage = Path.Combine(uploadPath, UneVoiture.Photo);
+                        System.IO.File.Delete(ancienneImage);
 
                         // Enregistrer l'image sur le serveur
                         using (var stream = new FileStream(filePath, FileMode.Create))
@@ -287,10 +283,10 @@ namespace Projet5ApplicationDotNet.Controllers
                     }
                     else
                     {
-                        var UneVoiture = _context.Voitures.AsNoTracking().FirstOrDefault(v => v.Id == id);
                         model.PhotoS = UneVoiture.Photo;
                     }
 
+                    model.PrixVente = (Convert.ToDouble(model.PrixAchat) + GetCoutTotal(model.IdVoiture) + 500).ToString();
                     var voiture = new Voiture()
                     {
                         Id = model.IdVoiture,
@@ -302,8 +298,8 @@ namespace Projet5ApplicationDotNet.Controllers
                         DateVente = model.DateVente,
                         Photo = model.PhotoS,
                         Description = model.Description,
-                        PrixVente = model.PrixVente,
-                        UnModele = modele
+                        UnModele = modele,
+                        PrixVente = model.PrixVente
                     };
 
                     _context.Update(voiture);
@@ -376,6 +372,9 @@ namespace Projet5ApplicationDotNet.Controllers
                 .FirstOrDefaultAsync(m => m.Id == IdVoiture);
             if (voiture != null)
             {
+                string uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+                string filePath = Path.Combine(uploadPath, voiture.Photo);
+                System.IO.File.Delete(filePath);
                 _context.Voitures.Remove(voiture);
             }
 
@@ -390,6 +389,19 @@ namespace Projet5ApplicationDotNet.Controllers
         private bool VoitureExists(int id)
         {
             return (_context.Voitures?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        private double GetCoutTotal(int id)
+        {
+            double cout = 0;
+            var reparations = _context.Reparations.Where(r => r.UneVoiture.Id == id).ToList();
+
+            foreach (var item in reparations)
+            {
+                cout = cout + Convert.ToDouble(item.Cout);
+            }
+
+            return cout;
         }
     }
 }
